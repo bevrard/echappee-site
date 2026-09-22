@@ -1,6 +1,6 @@
-# L’échapée — site
+# L’échappée — site
 
-Mini site de présentation pour **L’échapée** (projet Legend).
+Mini site de présentation pour **L’échappée** (projet Legend).
 
 - App : https://legend-161af.web.app
 - Repo app : https://github.com/bevrard/legend
