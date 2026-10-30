@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>L’échappée — Entraînement vélo</title>
-  <meta name="description" content="L’échappée transforme les grandes éditions de courses cyclistes en séances d’entraînement immersives : vidéos, coureurs, histoires." />
+  <title>Rouleur — Ride like a legend</title>
+  <meta name="description" content="Rouleur : revivez les grandes courses en Training ou Flash, et explorez vos parcours GPX avec Échappée." />
   <meta name="theme-color" content="#0a0a0a" />
-  <link rel="icon" href="assets/lechappee-logo.png" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -16,9 +17,9 @@
       --paper: #fafafa;
       --muted: #5c5c5c;
       --line: #e8e8e8;
-      --yellow: #f5d400;
-      --pink: #e91e8c;
-      --red: #e31c23;
+      --yellow: #edd206;
+      --pink: #ed167e;
+      --red: #ed262e;
       --card: #ffffff;
       --shadow: 0 18px 50px rgba(10, 10, 10, 0.08);
       --radius: 22px;
@@ -38,6 +39,8 @@
     }
 
     a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--pink); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
 
     .wrap {
       width: min(1080px, calc(100% - 2.5rem));
@@ -329,7 +332,8 @@
 
     @media (max-width: 860px) {
       .hero, .grid, .status { grid-template-columns: 1fr; }
-      nav { display: none; }
+      header { flex-wrap: wrap; }
+      nav { gap: .7rem; font-size: .85rem; }
       .hero { padding-top: 1.5rem; }
     }
   </style>
@@ -338,25 +342,25 @@
   <div class="wrap">
     <header>
       <a class="brand" href="./">
-        <img src="assets/lechappee-logo.png" alt="Logo L’échappée" />
-        <span>L’échappée</span>
+        <img src="assets/rouleur-logo.png" alt="" />
+        <span>Rouleur</span>
       </a>
       <nav>
         <a href="#vision">Vision</a>
-        <a href="#pilliers">Piliers</a>
-        <a href="#statut">Statut</a>
+        <a href="#experiences">Expériences</a>
+        <a href="#demarrer">Commencer</a>
         <a href="https://legend-161af.web.app" target="_blank" rel="noopener">Ouvrir l’app</a>
       </nav>
     </header>
 
     <section class="hero">
       <div>
-        <p class="eyebrow">Entraînement vélo</p>
+        <p class="eyebrow">Rouleur · Ride like a legend</p>
         <h1>Les grandes courses, <em>relancées</em> en séance.</h1>
         <p class="lede">
-          L’échappée (projet <strong>Legend</strong>) transforme les éditions iconiques du cyclisme
-          en bibliothèque vivante : vidéos, coureurs, contexte historique — pour s’entraîner
-          indoor en s’immergeant dans la course, pas seulement en suivant un entraînement générique.
+          Revivez les grandes courses du cyclisme sur votre vélo indoor, enchaînez les vidéos
+          en Flash ou partez sur votre propre parcours GPX avec Échappée.
+          Une application, plusieurs façons de rouler.
         </p>
         <div class="actions">
           <a class="btn btn-primary" href="https://legend-161af.web.app" target="_blank" rel="noopener">Essayer l’app</a>
@@ -364,114 +368,45 @@
         </div>
       </div>
       <aside class="hero-card">
-        <img src="assets/lechappee-logo.png" alt="L’échappée — logo montagne et cycliste" />
-        <p>Une identité visuelle déjà en place. Cette page décrit le produit sans toucher au déploiement Firebase de l’app.</p>
+        <img src="assets/rouleur-logo.png" alt="Rouleur — Ride like a legend, montagne et cycliste" />
+        <p>Les grandes courses. Vos propres échappées.</p>
       </aside>
     </section>
 
+    <main>
     <section id="vision">
-      <h2 class="section-title">Pourquoi L’échappée</h2>
-      <p class="section-sub">
-        L’objectif n’est pas une simple liste de résultats. C’est une archive éditoriale
-        explorable : découvrir une édition mémorable, comprendre qui l’a faite, regarder
-        les images d’époque, puis enchaîner vers d’autres histoires.
-      </p>
+      <h2 class="section-title">La passion du vélo comme fil conducteur</h2>
+      <p class="section-sub">Rouleur relie les images des grandes courses à votre effort, et les lieux de vos parcours à leurs histoires. Choisissez votre expérience depuis l’application.</p>
       <div class="grid">
-        <article class="card">
-          <span class="pill">Découvrir</span>
-          <h3>Éditions de légende</h3>
-          <p>Chaque édition de course est un objet à part entière : année, vainqueur, vidéo, synopsis, tags, rivalités.</p>
-        </article>
-        <article class="card">
-          <span class="pill pink">Relier</span>
-          <h3>Graphe des coureurs</h3>
-          <p>Du vainqueur aux autres courses qui l’ont défini. Le parcours utilisateur passe de la course au rider, puis à d’autres moments.</p>
-        </article>
-        <article class="card">
-          <span class="pill red">Ressentir</span>
-          <h3>Storytelling vidéo</h3>
-          <p>La vidéo est le crochet émotionnel : regarder maintenant, puis construire playlists, collections et séances guidées.</p>
-        </article>
+        <article class="card"><span class="pill">Découvrir</span><h3>Des courses et des coureurs</h3><p>Explorez les éditions du catalogue, leurs vidéos, leurs vainqueurs et les fiches des cyclistes. Gardez vos favoris et les courses à regarder plus tard.</p></article>
+        <article class="card"><span class="pill pink">Ressentir</span><h3>Un vélo connecté</h3><p>Connectez un vélo compatible Bluetooth, ou découvrez la démonstration. Le pilotage de difficulté s’active explicitement et dépend du matériel et du contenu disponibles.</p></article>
+        <article class="card"><span class="pill red">Explorer</span><h3>Votre parcours, vos histoires</h3><p>Importez un GPX pour préparer une sortie Échappée, avec une balade commentée ou une course virtuelle adaptée au relief.</p></article>
       </div>
     </section>
-
-    <section id="pilliers">
-      <h2 class="section-title">Ce que le produit doit porter</h2>
-      <p class="section-sub">Cinq piliers issus du brief produit — l’architecture laisse déjà de la place pour la couche personnelle.</p>
+    <section id="experiences">
+      <h2 class="section-title">Trois façons de prendre la route</h2>
+      <p class="section-sub">Les courses historiques et les sorties libres se retrouvent dans Rouleur.</p>
       <div class="grid">
-        <article class="card">
-          <h3>1. Bibliothèque d’éditions</h3>
-          <p>Unité de valeur principale : relire un moment, comparer les ères, découvrir une course inconnue.</p>
-        </article>
-        <article class="card">
-          <h3>2. Identité des cyclistes</h3>
-          <p>Plus qu’un nom sur un résultat : pays, victoires, rivaux, photos, accents couleur de maillot.</p>
-        </article>
-        <article class="card">
-          <h3>3. Vidéo au centre</h3>
-          <p>Lecture embarquée, métadonnées liées à l’émotion, base pour collections et expériences éditoriales.</p>
-        </article>
-        <article class="card">
-          <h3>4. Structure éditoriale</h3>
-          <p>Stories mises en avant, collections thématiques, navigation par ère, boucles de recommandation.</p>
-        </article>
-        <article class="card">
-          <h3>5. Couche personnelle</h3>
-          <p>Favoris, historique, reprendre une séance, collections sauvegardées — déjà amorcée côté app.</p>
-        </article>
-        <article class="card">
-          <h3>Usage indoor</h3>
-          <p>Pensé pour les sessions home-trainer : la course devient le fil narratif de l’effort.</p>
-        </article>
+        <article class="card"><span class="pill">Training</span><h3>Entrez dans la course</h3><p>Choisissez une édition et une durée proposée. Selon les contenus disponibles, le parcours et les commentaires préparent l’effort avant de retrouver les images de la course.</p></article>
+        <article class="card"><span class="pill pink">Flash</span><h3>Roulez au rythme des images</h3><p>Lancez un enchaînement de vidéos de courses, sans préparation narrative. Passez à la suivante ou laissez la file avancer à la fin de chaque vidéo.</p></article>
+        <article class="card"><span class="pill red">Échappée</span><h3>Dessinez votre sortie</h3><p>Choisissez votre GPX et préparez une balade avec des commentaires sur les lieux et le relief, ou une course arcade contre vingt adversaires virtuels. En indoor ou en outdoor.</p></article>
       </div>
     </section>
-
-    <section id="statut">
-      <h2 class="section-title">Où en est le projet</h2>
-      <p class="section-sub">État actuel d’après le README du repo — sans changer les pipelines Firebase Hosting.</p>
+    <section id="demarrer">
+      <h2 class="section-title">Avant de vous lancer</h2>
       <div class="status">
         <ul class="status-list">
-          <li>
-            <span class="dot ok"></span>
-            <div>
-              <strong>Déjà en place</strong>
-              <span>Onboarding, Ionic/Angular + Firebase, home éditoriale, bibliothèque de courses, détails édition/coureur, favoris &amp; plus tard, sync profil/librairie, déploiement Hosting.</span>
-            </div>
-          </li>
-          <li>
-            <span class="dot next"></span>
-            <div>
-              <strong>Encore léger volontairement</strong>
-              <span>Auth production peaufinée, textes éditoriaux riches, playlists, back-office, filtres avancés, vraies recommandations.</span>
-            </div>
-          </li>
-          <li>
-            <span class="dot"></span>
-            <div>
-              <strong>Pipeline contenu</strong>
-              <span>Collecte d’éditions via Actions + Firestore ; la page produit reste séparée de l’app déployée.</span>
-            </div>
-          </li>
+          <li><span class="dot ok" aria-hidden="true"></span><div><strong>Découvrez l’application en invité</strong><span>Un compte permet de synchroniser le profil, les favoris et la bibliothèque personnelle.</span></div></li>
+          <li><span class="dot next" aria-hidden="true"></span><div><strong>Préparez votre GPX pour Échappée</strong><span>Les fichiers restent dans la bibliothèque locale. Une sortie préparée reste en mémoire : recharger la page fait perdre la séance active.</span></div></li>
+          <li><span class="dot" aria-hidden="true"></span><div><strong>En outdoor, gardez la page visible</strong><span>Le suivi GPS nécessite le téléphone déverrouillé ; le suivi en arrière-plan n’est pas disponible. La compatibilité des vélos doit être vérifiée sur appareil.</span></div></li>
         </ul>
-        <aside class="card">
-          <span class="pill">Hosting app</span>
-          <h3>Firebase inchangé</h3>
-          <p style="margin-bottom:1rem">L’application live reste sur Firebase Hosting. Cette page GitHub Pages ne sert qu’à présenter L’échappée.</p>
-          <a class="btn btn-secondary" href="https://legend-161af.web.app" target="_blank" rel="noopener">legend-161af.web.app</a>
-        </aside>
+        <aside class="card"><span class="pill">En développement</span><h3>Un projet qui continue de rouler</h3><p>Les modes décrits sont présents dans le code de l’application. Leur disponibilité dépend des contenus et de la version déployée. L’intégration Strava et le coaching personnalisé restent des pistes futures.</p></aside>
       </div>
     </section>
-
-    <section class="cta">
-      <div>
-        <h2>Premier mini site — prêt à itérer</h2>
-        <p>Base de présentation publique pour L’échappée. On pourra ensuite ajouter captures d’écran, roadmap datée, ou une page “comment ça marche”.</p>
-      </div>
-      <a class="btn btn-primary" href="https://github.com/bevrard/legend" target="_blank" rel="noopener">Suivre sur GitHub</a>
-    </section>
-
+    <section class="cta"><div><h2>À vous de rouler.</h2><p>Une course de légende ou votre prochaine échappée : choisissez votre départ.</p></div><a class="btn btn-primary" href="https://legend-161af.web.app" target="_blank" rel="noopener">Ouvrir Rouleur</a></section>
+    </main>
     <footer>
-      <div>© L’échappée · projet Legend</div>
+      <div>Rouleur · Ride like a legend</div>
       <div>
         <a href="https://github.com/bevrard/legend">GitHub</a>
         ·
