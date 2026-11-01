@@ -1,0 +1,30 @@
+{
+  "source_repository": "https://github.com/bevrard/legend",
+  "master_sha256": "fc50d71ddfbc380fab698e85c85150988bcba5439e811a25f640ebff52183066",
+  "exports": {
+    "assets/rouleur-logo.png": {
+      "pixel_sha256": "05cf6f8fecefbab2e3bcb91b488d1150b8c1372de87293f64273c531dea700b9",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    "assets/favicon.png": {
+      "pixel_sha256": "d71216cfdbba2dd1d42196068e3564689478f102d0c8872d7920bd3a3c91c81f",
+      "size": [
+        32,
+        32
+      ],
+      "mode": "RGB"
+    },
+    "assets/apple-touch-icon.png": {
+      "pixel_sha256": "ba6ed0c428c6296248c36855a05cf3d019345c1bf8886e3991038c662a51deb8",
+      "size": [
+        180,
+        180
+      ],
+      "mode": "RGB"
+    }
+  }
+}

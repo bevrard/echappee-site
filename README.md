@@ -20,9 +20,30 @@ python3 -m http.server 8080
 Ouvrir `http://localhost:8080`. Aucun build ni service payant n’est nécessaire.
 La branche de rebranding ne publie pas le site en production.
 
-## Assets
+## Assets : master unique
 
-Le logo `assets/rouleur-logo.png` adapte le logo retenu dans l’issue #4 avec ImageGen
-(outil intégré), en remplaçant uniquement le nom et le slogan. Les exports web
-proviennent du lot versionné dans le dépôt de l’application ; voir son guide de
-rebranding pour la provenance et la régénération. L’ancien logo reste historique.
+Le dessin de référence est le logo original sur fond blanc, conservé intact dans
+le dépôt de l’application : [master](https://github.com/bevrard/legend/blob/main/resources/branding/master/logo-original-white.png).
+SHA-256 : `fc50d71ddfbc380fab698e85c85150988bcba5439e811a25f640ebff52183066`.
+
+Les logos et icônes du site sont des copies des exports mécaniques de l’application.
+Les formes, les couleurs, les angles de la montagne, le vélo et le casque ne
+doivent jamais être régénérés ou retouchés. Le fichier `assets/branding-manifest.json`
+porte l’empreinte du master et les empreintes des pixels attendus.
+
+Depuis le checkout de l’application, avec Pillow installé selon son fichier
+`scripts/requirements-branding.txt` :
+
+```sh
+python3 scripts/export-branding.py --site-dir /chemin/du/site
+python3 scripts/export-branding.py --check --site-dir /chemin/du/site
+```
+
+Voir le [contrat de marque](https://github.com/bevrard/legend/blob/main/docs/development/rebranding.md).
+Le fichier historique `assets/lechappee-logo.png` reste conservé intact. Il ne doit
+pas être modifié pour créer une nouvelle version de marque.
+
+Le contrôle local `python3 scripts/check-branding.py` (Pillow selon
+`scripts/requirements-branding.txt`) vérifie le master historique, le dessin du
+logo public pixel pour pixel et les empreintes des trois exports. Le workflow
+`Brand consistency checks` exécute ce contrôle sur les PR qui touchent aux assets.
