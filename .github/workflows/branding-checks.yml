@@ -1,0 +1,21 @@
+name: Brand consistency checks
+on:
+  pull_request:
+    paths:
+      - 'assets/**'
+      - 'scripts/check-branding.py'
+      - 'scripts/requirements-branding.txt'
+      - '.github/workflows/branding-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r scripts/requirements-branding.txt
+      - run: python scripts/check-branding.py
