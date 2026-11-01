@@ -47,3 +47,45 @@ Le contrôle local `python3 scripts/check-branding.py` (Pillow selon
 `scripts/requirements-branding.txt`) vérifie le master historique, le dessin du
 logo public pixel pour pixel et les empreintes des trois exports. Le workflow
 `Brand consistency checks` exécute ce contrôle sur les PR qui touchent aux assets.
+
+## Référencement naturel (SEO)
+
+L’optimisation répond à [legend#156](https://github.com/bevrard/legend/issues/156)
+pour ce site vitrine. Le domaine de référence est `https://rouleur.club/`, défini
+par [CNAME](CNAME).
+
+État implémenté :
+
+- [index.html](index.html) fournit un titre et une description en français,
+  une URL canonique absolue, des métadonnées Open Graph et Twitter avec le logo
+  approuvé, et des données structurées JSON-LD `WebSite` et `WebPage`.
+- Le H1 décrit les courses cyclistes sur vélo indoor et appartient au contenu
+  principal. Les dimensions intrinsèques des images réservent leur espace.
+- [robots.txt](robots.txt) autorise l’exploration et déclare le
+  [sitemap](sitemap.xml), qui contient uniquement la page canonique. Les ancres
+  internes ne sont pas des pages distinctes ; aucune date de modification
+  artificielle n’est publiée.
+- Le workflow [SEO checks](.github/workflows/seo-checks.yml) contrôle la cohérence
+  entre domaine, métadonnées, images, données structurées et fichiers d’exploration.
+
+Contrôle local sans dépendance :
+
+```sh
+python3 scripts/check-seo.py
+```
+
+Lors d’un changement de domaine, mettre à jour ensemble `CNAME`, la page HTML,
+`robots.txt` et `sitemap.xml`. Conserver les descriptions conformes aux modes
+réellement présentés, sans annoncer Strava ou le coaching comme disponibles.
+
+Limites : ces fichiers préparent l’indexation ; ils ne garantissent ni classement
+ni résultat enrichi. Aucun prix, avis ou score n’est inventé dans le JSON-LD.
+La publication dépend de la fusion et de GitHub Pages. Le contrôle local ne
+valide pas le DNS, les redirections HTTPS ou l’indexation effective.
+
+Après publication, vérifier les réponses HTTP de la page, de `robots.txt` et du
+sitemap, puis soumettre `https://rouleur.club/sitemap.xml` et inspecter l’URL dans
+Google Search Console avec un compte autorisé. Ces opérations restent à effectuer.
+Voir les références Google sur les
+[URL canoniques](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+et les [sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
