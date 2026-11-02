@@ -4,6 +4,7 @@ Site de présentation statique de Rouleur, publié via GitHub Pages après fusio
 Le nom technique du dépôt et les URLs existantes sont conservés.
 
 - [Application](https://legend-161af.web.app)
+- [Shop Rouleur](https://shop.rouleur.club) : boutique Shopify liée depuis la navigation et le pied de page du site public. La connexion DNS et la publication de la boutique se gèrent séparément dans Shopify et chez le gestionnaire DNS.
 - [Documentation de référence](https://github.com/bevrard/legend/blob/main/docs/README.md)
 - [Décision de marque et logo retenu](https://github.com/bevrard/legend/issues/4#issuecomment-6527955878)
 
