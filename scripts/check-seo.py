@@ -1,6 +1,7 @@
 """Contrôle la cohérence des signaux SEO du site statique, sans dépendance."""
 from html.parser import HTMLParser
 import json
+import sys
 from pathlib import Path
 from urllib.parse import urlsplit
 from urllib.robotparser import RobotFileParser
@@ -94,11 +95,30 @@ assert webpage['description'] == page.meta['description']
 assert webpage['primaryImageOfPage']['url'] == page.meta['og:image']
 sitemap = ET.parse(ROOT / 'sitemap.xml')
 ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
-assert [loc.text for loc in sitemap.findall('s:url/s:loc', ns)] == [canonical]
+legal_paths = ('confidentialite/', 'suppression-des-donnees/')
+assert [loc.text for loc in sitemap.findall('s:url/s:loc', ns)] == [canonical, *(canonical + path for path in legal_paths)]
+for path in legal_paths:
+    legal = Page()
+    legal_source = (ROOT / path / 'index.html').read_text()
+    if '--allow-draft' not in sys.argv:
+        assert 'A_CONFIRMER' not in legal_source, f'Contact/responsable à confirmer avant publication : {path}'
+    legal.feed(legal_source)
+    assert legal.canonicals == [canonical + path], f'URL canonique incorrecte : {path}'
+    assert legal.h1_count == 1 and legal.h1.strip(), f'H1 incorrect : {path}'
+    assert legal.title.strip() and legal.meta['description'].strip()
+    assert legal.meta['og:url'] == canonical + path
+    assert legal.meta['og:title'] == legal.title
+    assert legal.meta['og:description'] == legal.meta['description']
+    assert not (set(legal.anchors) - legal.ids), f'Ancre manquante : {path}'
+    assert not any(value in (legal.meta.get('robots') or '').lower() for value in ('noindex', 'nofollow'))
+    for img in legal.images:
+        assert img.get('width') and img.get('height') and 'alt' in img
+        assert (ROOT / path / img['src']).resolve().is_file()
+
 robots = RobotFileParser()
 robots.parse((ROOT / 'robots.txt').read_text().splitlines())
 assert robots.site_maps() == [canonical + 'sitemap.xml']
 for agent in ('Googlebot', 'Bingbot', '*'):
-    for path in ('', 'assets/rouleur-logo.png', 'sitemap.xml'):
+    for path in ('', *legal_paths, 'assets/rouleur-logo.png', 'sitemap.xml'):
         assert robots.can_fetch(agent, canonical + path), f'Exploration bloquée : {path}'
 print('SEO vérifié : métadonnées, URL canonique, partage, JSON-LD, sitemap et robots.txt.')

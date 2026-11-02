@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'index.html'
+      - 'confidentialite/**'
+      - 'suppression-des-donnees/**'
       - 'CNAME'
       - 'robots.txt'
       - 'sitemap.xml'
