@@ -62,7 +62,7 @@ par [CNAME](CNAME).
 - Le H1 décrit les courses cyclistes sur vélo indoor et appartient au contenu
   principal. Les dimensions intrinsèques des images réservent leur espace.
 - [robots.txt](robots.txt) autorise l’exploration et déclare le
-  [sitemap](sitemap.xml), qui contient uniquement la page canonique. Les ancres
+  [sitemap](sitemap.xml), qui contient la page d’accueil et les deux pages relatives aux données personnelles. Les ancres
   internes ne sont pas des pages distinctes ; aucune date de modification
   artificielle n’est publiée.
 - Le workflow [SEO checks](.github/workflows/seo-checks.yml) contrôle la cohérence
@@ -89,3 +89,54 @@ Google Search Console avec un compte autorisé. Ces opérations restent à effec
 Voir les références Google sur les
 [URL canoniques](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
 et les [sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
+
+
+## Confidentialité et suppression des données
+
+Les pages statiques publiques sont accessibles sans connexion :
+
+- [Politique de confidentialité](confidentialite/index.html) → `https://rouleur.club/confidentialite/`
+- [Instructions de suppression](suppression-des-donnees/index.html) → `https://rouleur.club/suppression-des-donnees/`
+
+Elles partagent [assets/legal.css](assets/legal.css), sont liées dans le pied de
+page et dans le sitemap. Elles ne chargent ni script ni police externe. Le contact
+et l’identité du responsable doivent être confirmés avant publication ; les
+marqueurs `A_CONFIRMER` bloquent le contrôle SEO normal et ne doivent pas être
+publiés. `python3 scripts/check-seo.py --allow-draft` permet de vérifier la
+structure pendant la rédaction sans lever ce blocage dans la CI.
+
+### Périmètre et références de rédaction
+
+Le contenu décrit le code de Rouleur au commit `9a0085f` :
+
+- [Authentification](https://github.com/bevrard/legend/blob/9a0085f/src/app/services/legend-auth.service.ts),
+  [profil et bibliothèque](https://github.com/bevrard/legend/blob/9a0085f/src/app/services/legend-cloud-user.service.ts),
+  [progression des séances](https://github.com/bevrard/legend/blob/9a0085f/src/app/services/legend-session-tracking.service.ts).
+- [Demandes de support](https://github.com/bevrard/legend/blob/9a0085f/src/app/services/feedback.service.ts)
+  et [transfert vers GitHub](https://github.com/bevrard/legend/blob/9a0085f/scripts/sync-feedback-to-github.mjs).
+- [Stockage local GPX](https://github.com/bevrard/legend/blob/9a0085f/src/app/pages/echappee/session.models.ts),
+  [analyse/génération](https://github.com/bevrard/legend/blob/9a0085f/functions/index.mjs),
+  [accès et limites réseau](https://github.com/bevrard/legend/blob/9a0085f/functions/inventory-access.mjs),
+  [prestataires](https://github.com/bevrard/legend/blob/9a0085f/docs/integrations/overview.md)
+  et [rétention des sauvegardes](https://github.com/bevrard/legend/blob/9a0085f/docs/ci-cd/firestore-backups.md).
+- [Information des personnes — CNIL](https://www.cnil.fr/fr/conformite-rgpd-information-des-personnes-et-transparence)
+  et [droit à l’effacement — APD](https://www.dataprotectionauthority.be/professionnel/rgpd-/droits-des-citoyens/droit-a-l-effacement).
+
+Aucun bouton de suppression de compte ni traitement automatique des demandes
+n’est ajouté par ces pages. La procédure publiée doit être assurée manuellement
+par le responsable : vérifier le compte, supprimer l’identité d’authentification
+et les données associées (y compris sous-collections, séances, préparations et
+copies de support), puis confirmer le résultat. Retirer l’application de Facebook
+ou supprimer le seul utilisateur Firebase Auth ne supprime pas tout Firestore.
+Les données locales restent à effacer sur chaque appareil. Les sauvegardes suivent
+leur cycle de conservation ; les exceptions légales doivent être motivées.
+
+L’expiration d’une analyse de parcours après une heure ne prouve pas un effacement
+physique automatique. Les durées techniques, les garanties de transfert et les
+services réellement utilisés doivent être revus avec leur configuration lorsque
+l’application évolue. Cette documentation ne certifie ni une acceptation Meta ni
+la conformité de tous les parcours de l’application.
+
+Après fusion et déploiement GitHub Pages, vérifier les deux URLs publiques avant
+de les renseigner dans Meta. La vérification d’entreprise/identité Meta reste une
+opération séparée.
