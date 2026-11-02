@@ -99,11 +99,11 @@ Les pages statiques publiques sont accessibles sans connexion :
 - [Instructions de suppression](suppression-des-donnees/index.html) → `https://rouleur.club/suppression-des-donnees/`
 
 Elles partagent [assets/legal.css](assets/legal.css), sont liées dans le pied de
-page et dans le sitemap. Elles ne chargent ni script ni police externe. Le contact
-et l’identité du responsable doivent être confirmés avant publication ; les
-marqueurs `A_CONFIRMER` bloquent le contrôle SEO normal et ne doivent pas être
-publiés. `python3 scripts/check-seo.py --allow-draft` permet de vérifier la
-structure pendant la rédaction sans lever ce blocage dans la CI.
+page et dans le sitemap. Elles ne chargent ni script ni police externe. Le responsable indiqué est **Codio** ; le contact public est
+**benjamin@codio.be**, conformément aux coordonnées fournies par le propriétaire
+du projet. Les marqueurs `A_CONFIRMER` bloquent le contrôle SEO normal et ne
+doivent pas être publiés. L’option `--allow-draft` est réservée à la rédaction
+locale ; la CI utilise toujours le contrôle normal.
 
 ### Périmètre et références de rédaction
 
